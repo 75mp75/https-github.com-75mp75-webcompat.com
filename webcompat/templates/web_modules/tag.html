@@ -1,0 +1,14 @@
+{% macro tag(type, category) %}
+
+  {% if type == 'filter' %}
+
+    <li class="{{ category.name }} js-Tag" data-filter="{{ category.dataAttribute }}">
+       {{ category.label }}
+    </li>
+
+  {% elif type == 'tag' %}
+
+    <div class="<%= stateClass %>"><%= issueState %></div>
+
+  {% endif %}
+{% endmacro %}

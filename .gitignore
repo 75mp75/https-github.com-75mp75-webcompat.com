@@ -1,0 +1,44 @@
+.env
+env/
+venv/
+node_modules/
+git_modules/
+.DS_Store
+config.py
+fabfile.py
+*.pyc
+*.db
+docs/build/
+screenshots/
+uploads/
+.idea/
+.vscode/
+config/secrets.py
+package-lock.json
+tmp/
+
+# Ignore the installable app.
+*.egg-info
+
+# The data folder contains information that shouldn't live in version control.
+data/*
+
+# these are our 'dist' files
+# checking them into the repo is silly
+webcompat/**/*.min.js
+# but don't ignore minified js code in the /vendor/ directory
+!webcompat/**/vendor/*.min.js
+webcompat/static/js/*.js
+webcompat/static/js/build/
+webcompat/static/js/dist/
+webcompat/**/*.min.css
+webcompat/static/css/dist/
+webcompat/static/dist
+
+#selenium server
+*.jar
+*.pid
+nohup.out
+
+# tests
+.noseids
