@@ -1,0 +1,29 @@
+{
+  "_fixture": true,
+  "url": "https://api.github.com/repos/webcompat/webcompat-tests/issues/comments/144014184",
+  "html_url": "https://github.com/webcompat/webcompat-tests/issues/100#issuecomment-144014184",
+  "issue_url": "https://api.github.com/repos/webcompat/webcompat-tests/issues/100",
+  "id": 144014184,
+  "user": {
+    "login": "GIGANTOR",
+    "id": 7131070,
+    "avatar_url": "https://avatars.githubusercontent.com/u/7131070?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/GIGANTOR",
+    "html_url": "https://github.com/GIGANTOR",
+    "followers_url": "https://api.github.com/users/GIGANTOR/followers",
+    "following_url": "https://api.github.com/users/GIGANTOR/following{/other_user}",
+    "gists_url": "https://api.github.com/users/GIGANTOR/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/GIGANTOR/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/GIGANTOR/subscriptions",
+    "organizations_url": "https://api.github.com/users/GIGANTOR/orgs",
+    "repos_url": "https://api.github.com/users/GIGANTOR/repos",
+    "events_url": "https://api.github.com/users/GIGANTOR/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/GIGANTOR/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "created_at": "2020-05-19T10:10:16Z",
+  "updated_at": "2015-05-19T10:10:16Z",
+  "body_html": "Hey cool it's my new comment"
+}
