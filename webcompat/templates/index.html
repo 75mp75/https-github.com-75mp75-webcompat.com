@@ -1,0 +1,20 @@
+{%- extends "layout.html" -%}
+{% block title %}Bug reporting for the web{% endblock %}
+{%- block body -%}
+{% include "nav/topbar.html" %}
+<main role="main">
+ 	{% include "home-page/hero.html" %}
+  	{% include "home-page/how-it-works.html" %}
+  	{% include "home-page/join-us.html" %}
+  	{% include "home-page/browse-issues.html" %}
+</main>
+{% endblock %}
+{%- block extrascripts -%}
+{%- if config.PRODUCTION or config.STAGING -%}
+<script src="{{ url_for('static', filename='js/dist/index.min.js')|bust_cache }}"></script>
+{%- else -%}
+<script src="{{ url_for('static', filename='js/lib/models/label-list.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/models/issue.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/untriaged.js') }}"></script>
+{%- endif -%}
+{%- endblock %}

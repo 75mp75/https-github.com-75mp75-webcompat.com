@@ -1,0 +1,69 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      # using -node-browsers to get node + firefox + chrome + geckoview
+      - image: circleci/python:3.7.3-stretch-node-browsers
+        environment:
+          FLASK_CONFIG: testing
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - deps1-{{ .Branch }}-{{ checksum "config/requirements-dev.txt" }}
+            - v1-npm-{{ .Branch }}-{{ checksum "package.json" }}
+      # - restore_cache:
+      #     keys:
+      #     - v1-pip-{{ checksum "config/requirements-dev.txt" }}
+      #     # fallback to using the latest cache if no exact match is found
+      #     - v1-pip-
+      #     - v1-npm-{{ checksum "package.json" }}
+      #     - v1-npm-
+      - run:
+          name: install python deps
+          command: |
+            python3 -m venv env
+            . env/bin/activate
+            pip install -r config/requirements-dev.txt
+            # not sure we need this for circleci
+            # npm run config
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "config/requirements-dev.txt" }}
+          paths:
+            - "env"
+      # NPM INSTALL
+      - run:
+          name: install npm deps
+          command: |
+            npm install
+
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: v1-npm-{{ .Branch }}-{{ checksum "package.json" }}
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            . env/bin/activate
+            npm run lint
+            npm run build
+            pip install -e .
+            pytest tests
+            python run.py -t &
+            sleep 5
+            node --max-old-space-size=8192 ./tests/functional/_intern.js --reporters="runner" --firefoxBinary=`which firefox`
+            firefox --version
+      - store_artifacts:
+          path: test-reports/
+          destination: test-reports
