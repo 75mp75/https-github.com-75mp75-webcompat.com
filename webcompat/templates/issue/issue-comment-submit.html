@@ -1,0 +1,21 @@
+<form class="js-Comment-form js-loader" data-username="{{ session.username }}" data-avatar-url="{{ session.avatar_url }}">
+  <header class="comment-header">
+    <figure class="comment-author" role="group">
+      <img src="{{ session.avatar_url }}" class="comment-avatar" alt="{{ session.username }}">
+      <figcaption class="js-Comment-owner">
+        {{ session.username }}
+      </figcaption>
+    </figure>
+  </header>
+  <div class="comment-body grid-cell x2">
+    <div class="form-text form-element">
+      <label for="newComment" class="form-label off-screen">Leave a comment</label>
+      <textarea id="newComment" class="form-field text-field light js-autogrow-field js-Comment-text mousetrap" rows="2" placeholder="Leave a comment"
+        required></textarea>
+    </div>
+    <div class="js-ImageUploadView">
+      {% include "issue/upload-image.jst" %}
+    </div>
+    <button value="comment" class="button button-primary comment-submit js-Issue-comment-button" type="submit">Comment</button>
+  </div>
+</form>
