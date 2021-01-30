@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="wc-SearchIssue js-SearchIssue" data-username="{{ session.username }}">
+  {% include "shared/nav.html" %}
+  <main role="main">
+
+    <div class="wc-Loader js-loader"></div>
+
+    <section class="wc-UISection">
+      <div class="wc-UIContent js-SearchIssue-filter">
+        {% include "list-issue/search-issue-filter.html" %}
+      </div>
+    </section>
+
+    <section>
+      {% include "list-issue/search-issue-search-form.html" %}
+    </section>
+
+    <section class="wc-UISection wc-UISection--backgroundColor">
+      <div class="wc-SearchIssue-sorting">
+        {% include "list-issue/search-issue-sorting.html" %}
+      </div>
+      {% include "list-issue/issue-list.html" %}
+    </section>
+
+  </main>
+</div>
+
+{% endblock %}
+{% block extrascripts %}
+<script>var repoPath="{{config['ISSUES_REPO_URI']}}";</script>
+{%- if config.PRODUCTION or config.STAGING -%}
+<script src="{{ url_for('static', filename='js/issue-list.min.js')|bust_cache }}"></script>
+{% else %}
+<script src="{{ url_for('static', filename='js/lib/models/label-list.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/labels.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/models/issue.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/mixins/pagination.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/issue-list.js') }}"></script>
+{%- endif %}
+{% endblock %}

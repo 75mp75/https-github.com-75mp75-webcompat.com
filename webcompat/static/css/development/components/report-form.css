@@ -1,0 +1,26 @@
+/** @define ReportForm */
+
+.wc-HomePage .wc-ReportForm {
+  display: none;
+}
+
+  /* state */
+  .wc-ReportForm.is-opened {
+    display: block;
+  }
+
+  /* actions */
+  .wc-ReportForm-actions {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+    @media all and (min-width: 30.75em) {
+
+      /* space between button */
+      .wc-ReportForm-actions-button + .wc-ReportForm-actions-button {
+        margin-left: .6em;
+      }
+  }

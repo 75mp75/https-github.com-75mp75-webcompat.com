@@ -1,0 +1,34 @@
+env/
+node_modules/
+git_modules/
+.DS_Store
+config.py
+fabfile.py
+*.pyc
+*.db
+docs/build/
+screenshots/
+uploads/
+.idea/
+config/secrets.py
+
+# backup folder contains the issues.db backup file with issues dump
+# for the previous versions
+backups/*.db
+
+# these are our 'dist' files
+# checking them into the repo is silly
+webcompat/static/js/webcompat.js
+webcompat/static/js/diagnose.js
+webcompat/static/js/issues.js
+webcompat/static/js/issue-list.js
+webcompat/static/js/user-activity.js
+webcompat/static/js/cssfixme.js
+webcompat/**/*.min.js
+webcompat/**/*.min.css
+webcompat/**/*.dev.css
+
+#selenium server
+*.jar
+*.pid
+nohup.out

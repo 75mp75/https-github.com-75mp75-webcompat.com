@@ -1,0 +1,54 @@
+{
+  "title": "webcompat.com",
+  "name": "webcompat",
+  "author": {
+    "name": "The fine folks who contribute to webcompat.com",
+    "url": "http://webcompat.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webcompat/webcompat.com.git"
+  },
+  "engines": {
+    "node": ">= 4.x"
+  },
+  "devDependencies": {
+    "cssrecipes-custom-media-queries": "0.3.0",
+    "cssrecipes-defaults": "^0.5.0",
+    "cssrecipes-grid": "^0.4.0",
+    "cssrecipes-reset": "^0.5.0",
+    "cssrecipes-utils": "^0.5.0",
+    "eslint": "^3.4.0",
+    "grunt": "~0.4.5",
+    "grunt-check-dependencies": "~0.9.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-imagemin": "~1.0.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-eslint": "^19.0.0",
+    "grunt-postcss": "^0.8.0",
+    "intern": "2.2.0",
+    "load-grunt-tasks": "~0.6.0",
+    "postcss": "^5.0.19",
+    "postcss-browser-reporter": "^0.4.0",
+    "postcss-cssnext": "^2.4.0",
+    "postcss-import": "^8.0.2",
+    "postcss-reporter": "^1.3.3",
+    "postcss-url": "^5.1.1",
+    "suitcss-utils-align": "^0.2.0",
+    "suitcss-utils-display": "^0.4.0"
+  },
+  "scripts": {
+    "init": "npm run module && npm run virtualenv && npm run pip && npm install && npm run config",
+    "watch" : "grunt watch",
+    "build": "grunt",
+    "module": "git submodule init && git submodule update",
+    "start": "source env/bin/activate && python run.py",
+    "virtualenv" : "pip install virtualenv && virtualenv env &&  source env/bin/activate",
+    "pip": "pip install -r config/requirements.txt",
+    "config": "cp config/secrets.py.example config/secrets.py",
+    "project-update": "pip install --upgrade pip && npm run backend-install && npm update"
+  },
+  "license": "MPL-2.0"
+}
