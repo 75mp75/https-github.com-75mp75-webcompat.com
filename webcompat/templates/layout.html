@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Web Compatibility{% endblock %} | webcompat.com</title>
+  <meta charset="utf-8">
+  {%- if not config.PRODUCTION -%}
+  <meta name="env" content="staging: {{ config.STAGING }}, prod: {{config.PRODUCTION}}, localhost: {{config.LOCALHOST}}">
+  {%- endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Open source community for web compatibility.  Report bugs from websites or for browsers and help us move the web forward.">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}" sizes="32x32">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Source+Sans+Pro:300,400" rel="stylesheet">
+  <link href="{{ url_for('static', filename='dist/webcompat.css') }}" type="text/css" rel="stylesheet">
+</head>
+<body id="body-webcompat" data-username="{{ session.username }}">
+{% include "shared/svg-icons.html" %}
+{% block body %}{% endblock %}
+{% include "shared/footer.html" %}
+{%- if config.PRODUCTION or config.STAGING -%}
+<!-- Google Analytics -->
+<script src="{{ url_for('static', filename='dist/ga.js') }}"></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<script nomodule src="{{ url_for('static', filename='dist/vendor.es5.js')|bust_cache }}"></script>
+<script nomodule src="{{ url_for('static', filename='dist/webcompat.es5.js')|bust_cache }}"></script>
+
+{% endif -%}
+<script type="module" src="{{ url_for('static', filename='dist/vendor.js')|bust_cache }}"></script>
+<script type="module" src="{{ url_for('static', filename='dist/webcompat.js')|bust_cache }}"></script>
+
+{%- if config['LOCALHOST'] %}
+<script src="{{ url_for('get_test_helper',
+                         filename='functional/lib/window-helpers.js') }}"></script>
+{% endif -%}
+
+{% include "shared/flashed-messages.html" %}
+
+{% block extrascripts %}{% endblock %}
+</body>
+</html>
