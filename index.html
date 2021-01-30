@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>webcompat.com // Pattern-Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Open source community for web compatibility.  Report bugs from websites or for browsers and help us move the web forward.">
+  <!-- Web APP iOS/Android -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta content="WebCompat" name="apple-mobile-web-app-title">
+  <link rel="shortcut icon" href="webcompat/static/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="webcompat/static/favicon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="webcompat/static/favicon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="webcompat/static/favicon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="webcompat/static/favicon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="webcompat/static/favicon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="webcompat/static/favicon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="webcompat/static/favicon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="webcompat/static/favicon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="webcompat/static/favicon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="webcompat/static/favicon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="webcompat/static/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="webcompat/static/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="webcompat/static/favicon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#e4bc05">
+  <meta name="msapplication-TileImage" content="webcompat/static/favicon/mstile-144x144.png">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link href="webcompat/static/css/webcompat.dev.css?v=0.0.1" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="wc-viewport page">
+  <header class="header">
+    <nav class="wc-content">
+      <div class="nav__section">
+        <span class="nav__link">WebCompat.com</span>
+      </div>
+    </nav>
+  </header>
+  <div class="wc-content wc-content--body">
+    <h1>Pattern-Portfolio</h1>
+      <div class="portfolio">
+        <h2 class="portfolio__title">Methdology : <strong>BEM</strong></h2>
+        <p>BEM is an abbreviation of three entities: a Block, an Element and a Modifier. BEM is a methodology of web projects development, that allows you to divide an interface into logically independent blocks. More info <a href="http://bem.info/" title="bem">here</a></p>
+        <p>We use the postprocessor "Myth". File includes all the variables : <a href="https://github.com/webcompat/webcompat.com/blob/master/webcompat/static/css/development/base/variable.css">here</a>.
+          Variables are used like this: <code>.Myclass {color: var (--nameOfvariable))</code></p>
+      </div>
+      <div class="portfolio">
+        <h2 class="portfolio__title">Container</h2>
+        <p>Use <code>.wc-content</code> for a responsive fixed width container.</p>
+      </div>
+      <div class="portfolio">
+        <h2 class="portfolio__title">Typography</h2>
+        <div><h1 class="wc-inlineBlock">H1 title</h1> <code>font-size: 3.5em;font-weight: 700;</code></div>
+        <div><h2 class="wc-inlineBlock">H2 title</h2> <code>font-size: 2em;font-weight: 600;</code></div>
+        <div><h3 class="wc-inlineBlock">H3 title</h3> <code>font-size: 1.5em;</code></div>
+        <div><h4 class="wc-inlineBlock">h4 title</h4> <code>font-size: 1.25em;</code></div>
+        <div><p class="wc-inlineBlock">p paragraph</p> <code>font-size:1em</code></div>
+      </div>
+      <div class="portfolio">
+        <h2 class="portfolio__title">Font</h2>
+        <p>Default font : <code>--base-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;</code></p>
+      </div>
+      <div class="portfolio">
+        <h2 class="portfolio__title">Button</h2>
+        <button type="button" class="Button Button--default">Button default</button> <code>.Button .Button--default</code><br/>
+        <button type="button" class="Button Button--action">Button action</button> <code>.Button .Button--action</code>
+        <br/>
+        <button type="button" class="Button Button--default is-disabled">Button default disabled</button> <code>.Button .Button--default .is-disabled</code><br/>
+        <button type="button" class="Button Button--action is-disabled">Button action disabled</button> <code>.Button .Button--action .is-disabled</code>
+      </div>
+      <div class="portfolio">
+        <h2 class="portfolio__title">Color</h2>
+        <p>
+            <h3>Basic color</h3>
+            <div><div class="portfolio_color" style="background-color:#F8C41C"></div> <code>.MyClass {background-color : var(--wc-background-dark);</code></div>
+            <div><div class="portfolio_color" style="background-color:#FBC55F"></div> <code>.MyClass {background-color : var(--wc-background-light);</code></div>
+            <div><div class="portfolio_color" style="background-color:#404040"></div> <code>.MyClass {background-color : var(--wc-variant-background-dark);</code></div>
+            <div><div class="portfolio_color" style="background-color:#c2c2c2"></div> <code>.MyClass {background-color : var(--wc-background-light:);</code></div>
+            <div><div class="portfolio_color" style="background-color:#F8C41C"></div> <code>.MyClass {background-color : var(--wc-background-dark:);</code></div>
+            <h3>State issue</h3>
+            <div><div class="portfolio_color" style="background-color:#ff8364"></div> <code>.MyClass {background-color : var(--wc-state-need);</code></div>
+            <div><div class="portfolio_color" style="background-color:#a1ebbf"></div> <code>.MyClass {background-color : var(--wc-state-ready);</code></div>
+            <div><div class="portfolio_color" style="background-color:#006B75"></div> <code>.MyClass {background-color : var(--wc-state-sitewait);</code></div>
+            <div><div class="portfolio_color" style="background-color:#6FC7FA"></div> <code>.MyClass {background-color : var(--wc-stat-close);</code></div>
+        </p>
+      </div>
+      <div class="portfolio">
+       <h2 class="portfolio__title">Utilities</h2>
+       <div class="wc-bold">Bold <code>.wc-bold</code></div>
+     </div>
+     <div class="portfolio">
+       <h2 class="portfolio__title">Utilities Layout</h2>
+       <div class="wc-clear-float">
+         <div class="wc-float-left"><code>.wc-float-left</code></div>
+         <div class="wc-float-right"><code>.wc-float-right</code></div>
+       </div>
+     </div>
+    </div>
+  </div>
+</body>
+</html>
