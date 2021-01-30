@@ -1,0 +1,9 @@
+{% from "web_modules/tag.html" import tag with context %}
+
+<ul class="filter-label">
+  {% for category in categories %}
+  {{ tag('filter', category) }}
+  {% endfor %}
+</ul>
+
+{% include "list-issue/dropdown.jst" %}
