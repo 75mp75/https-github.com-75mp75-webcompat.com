@@ -1,0 +1,17 @@
+{
+  "sourceType": "unambiguous",
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "bugfixes": true,
+        "modules": false,
+        "targets": {
+          "esmodules": true
+        },
+        "corejs": "3",
+        "useBuiltIns": "usage"
+      }
+    ]
+  ]
+}
