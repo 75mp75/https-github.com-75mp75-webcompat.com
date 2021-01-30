@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}Issue #{{ number }}{% endblock %}
+{% block body %}
+  {% include "nav/nav.html" %}
+  <main class="grid grid-show-gap" role="main"
+        data-issue-number={{ number }}
+        data-repo-path="{{ config['ISSUES_REPO_URI'] }}"
+        data-statuses="{{ config['JSON_STATUSES'] }}"
+        >
+    <section id="issue" class="grid-row js-Issue is-hidden">
+      <article class="grid-nested x2 issue-labels">
+        <div class="grid-row">
+          <section id="js-Issue-information" class="grid-cell">
+            {% include "issue/issue-information.html" %}
+          </section>
+          <section class="js-Issue-commentList issue-comment">
+            {% include "issue/issue-comment-list.jst" %}
+          </section>
+          {% if session.user_id and session.avatar_url %}
+            <section class="grid-cell issue-comment issue-new-comment x3">
+              {% include "issue/issue-comment-submit.html" %}
+            </section>
+          {% endif %}
+        </div>
+        <section class="grid-row grid-nested x2">
+          <div class="x2 grid-cell hint-text">
+          {% if not session.user_id and not session.avatar_url %}
+            <a class="x2" href="{{ url_for('login') }}">Please login to edit issues.</a>
+          {% endif %}
+            <p><a class="x2" href="https://github.com/{{ config['ISSUES_REPO_URI'] }}/{{ number }}">
+              View issue on Github
+            </a></p>
+            <span class="desktop-only">Shortcut: Press <b>l</b> on your keyboard to open the label editor.</span>
+            <span class="desktop-only">Shortcut: Press <b>g</b> on your keyboard to be taken to the GitHub view of this page.</span>
+          </div>
+        </section>
+      </article>
+      <aside class="grid-cell x1 label-box">
+        {% include "issue/issue-aside.html" %}
+      </aside>
+    </section>
+  </main>
+{% endblock %}
+{% block extrascripts %}
+{%- if config.PRODUCTION or config.STAGING -%}
+<script src="{{ url_for('static', filename='js/dist/issues.min.js')|bust_cache }}"></script>
+{% else %}
+<script src="{{ url_for('static', filename='js/lib/mixins/extend-md-sanitizer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/models/label-list.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/editor.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/labels.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/models/milestones.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/milestones.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/models/issue.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/models/comment.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/comments.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/issues.js') }}"></script>
+{%- endif %}
+{% endblock %}

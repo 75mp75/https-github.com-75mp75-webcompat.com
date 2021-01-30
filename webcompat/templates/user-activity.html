@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}{{user}}'s Activity{% endblock %}
+{% block body %}
+{% include "nav/nav.html" %}
+<main role="main" data-repo-path="{{config['ISSUES_REPO_URI']}}">
+  <section id="browse-issues-wrapper" class="js-list-issue issues-list loader js-loader is-active">
+    {% include "user-activity/needsinfo.html" %}
+    {% include "user-activity/reported-by-user.html" %}
+    {% include "user-activity/user-mentions.html" %}
+  </section>
+</main>
+{% endblock %}
+{% block extrascripts %}
+{%- if config.PRODUCTION or config.STAGING -%}
+<script src="{{ url_for('static', filename='js/dist/user-activity.min.js')|bust_cache }}"></script>
+{% else %}
+<script src="{{ url_for('static', filename='js/lib/models/label-list.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/models/issue.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/mixins/pagination.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/user-activity.js') }}"></script>
+{%- endif %}
+{% endblock %}
